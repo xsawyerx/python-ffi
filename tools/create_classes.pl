@@ -4,9 +4,10 @@ use warnings;
 use Path::Tiny qw< path >;
 use Text::Template;
 use JSON::MaybeXS qw< decode_json >;
+use constant { 'SPACES' => 8 };
 
 my $tmpl_string = << '_END_TEMPLATE';
-package Python::FFI::{$namespace}
+package Python::FFI::{$namespace};
 
 use Moose::Role;
 
@@ -38,22 +39,24 @@ foreach my $func ( sort keys %{$data} ) {
 
     if ( $func =~ /Py([^_]+)_.+/xms ) {
         my $class = $1;
-        push @{ $classes{"$class.pm"} }, [ $func, $return, $args ];
+        push @{ $classes{$class} }, [ $func, $return, $args ];
     } else {
-        push @{ $classes{'FFI.pm'} }, [ $func, $return, $args ];
+        push @{ $classes{'FFI'} }, [ $func, $return, $args ];
     }
 }
 
 foreach my $class ( sort keys %classes ) {
-    $class eq 'FFI.pm'
+    $class eq 'FFI'
         and next;
 
     my @subs;
     foreach my $func_spec ( @{ $classes{$class} } ) {
         my ( $name, $return, $args ) = @{$func_spec};
-        convert_types(\$return);
-        convert_types(\$_) for @{$args};
-        push @subs, ' ' x 8 . qq!'$name' => [ [ @{[ join ', ', map "'$_'", @{$args} ]} ] => '$return' ],!;
+        convert_types( \$return );
+        convert_types( \$_ ) for @{$args};
+        my $args_list = join ', ', map "'$_'", @{$args};
+        push @subs,
+            ' ' x SPACES() . qq!'$name' => [ [ $args_list ] => '$return' ],!;
     }
 
 
@@ -66,7 +69,7 @@ foreach my $class ( sort keys %classes ) {
         'HASH' => $vars,
     );
 
-    path("../FFI/$class")->spew_utf8($str);
+    path("../lib/Python/FFI/$class.pm")->spew_utf8($str);
 
     #last;
 }
