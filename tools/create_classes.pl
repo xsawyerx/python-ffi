@@ -25,9 +25,9 @@ around 'ffi_subs_data' => sub \{
         %\{ $self->$orig(@_) \},
 {$ffi_subs_data}
     \};
+\};
 
 {$func_subs}
-\};
 
 no Moose::Role;
 
