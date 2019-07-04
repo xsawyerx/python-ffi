@@ -16,6 +16,8 @@ my $tmpl_string = << '_END_TEMPLATE';
 package Python::FFI::{$namespace};
 
 use Moose::Role;
+no warnings 'experimental::signatures';
+use feature 'signatures';
 
 around 'ffi_subs_data' => sub \{
     my $orig = shift;
