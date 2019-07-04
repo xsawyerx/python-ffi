@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PySeqIter_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PySeqIter_New' => [ ['opaque'] => 'opaque' ],
     };
 };
 

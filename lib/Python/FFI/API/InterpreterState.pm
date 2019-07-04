@@ -6,11 +6,11 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyInterpreterState_Clear' => [ [ 'PyInterpreterState *' ] => 'void' ],
-        'PyInterpreterState_Delete' => [ [ 'PyInterpreterState *' ] => 'void' ],
-        'PyInterpreterState_GetDict' => [ [ 'PyInterpreterState *' ] => 'opaque' ],
-        'PyInterpreterState_GetID' => [ [ 'PyInterpreterState *' ] => 'int64_t' ],
-        'PyInterpreterState_New' => [ [ 'void' ] => 'PyInterpreterState *' ],
+        'PyInterpreterState_Clear' => [ ['PyInterpreterState *'] => 'void' ],
+        'PyInterpreterState_Delete' => [ ['PyInterpreterState *'] => 'void' ],
+        'PyInterpreterState_GetDict' => [ ['PyInterpreterState *'] => 'opaque' ],
+        'PyInterpreterState_GetID' => [ ['PyInterpreterState *'] => 'int64_t' ],
+        'PyInterpreterState_New' => [ [] => 'PyInterpreterState *' ],
     };
 };
 

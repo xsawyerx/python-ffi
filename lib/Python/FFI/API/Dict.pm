@@ -6,25 +6,25 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyDict_Clear' => [ [ 'opaque' ] => 'void' ],
+        'PyDict_Clear' => [ ['opaque'] => 'void' ],
         'PyDict_Contains' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PyDict_Copy' => [ [ 'opaque' ] => 'opaque' ],
+        'PyDict_Copy' => [ ['opaque'] => 'opaque' ],
         'PyDict_DelItem' => [ [ 'opaque', 'opaque' ] => 'int' ],
         'PyDict_DelItemString' => [ [ 'opaque', 'string' ] => 'int' ],
         'PyDict_GetItem' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
         'PyDict_GetItemString' => [ [ 'opaque', 'string' ] => 'opaque' ],
         'PyDict_GetItemWithError' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
-        'PyDict_Items' => [ [ 'opaque' ] => 'opaque' ],
-        'PyDict_Keys' => [ [ 'opaque' ] => 'opaque' ],
+        'PyDict_Items' => [ ['opaque'] => 'opaque' ],
+        'PyDict_Keys' => [ ['opaque'] => 'opaque' ],
         'PyDict_Merge' => [ [ 'opaque', 'opaque', 'int' ] => 'int' ],
         'PyDict_MergeFromSeq2' => [ [ 'opaque', 'PyObject *2', 'int' ] => 'int' ],
-        'PyDict_New' => [ [ 'void' ] => 'opaque' ],
+        'PyDict_New' => [ [] => 'opaque' ],
         'PyDict_Next' => [ [ 'opaque', 'Py_ssize_t *', 'PyObject **', 'PyObject **' ] => 'int' ],
         'PyDict_SetItem' => [ [ 'opaque', 'opaque', 'opaque' ] => 'int' ],
         'PyDict_SetItemString' => [ [ 'opaque', 'string', 'opaque' ] => 'int' ],
-        'PyDict_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PyDict_Size' => [ ['opaque'] => 'Py_ssize_t' ],
         'PyDict_Update' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PyDict_Values' => [ [ 'opaque' ] => 'opaque' ],
+        'PyDict_Values' => [ ['opaque'] => 'opaque' ],
     };
 };
 

@@ -6,13 +6,13 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyTuple_ClearFreeList' => [ [ 'void' ] => 'int' ],
+        'PyTuple_ClearFreeList' => [ [] => 'int' ],
         'PyTuple_GetItem' => [ [ 'opaque', 'Py_ssize_t' ] => 'opaque' ],
         'PyTuple_GetSlice' => [ [ 'opaque', 'Py_ssize_t', 'Py_ssize_t' ] => 'opaque' ],
-        'PyTuple_New' => [ [ 'Py_ssize_t size' ] => 'opaque' ],
+        'PyTuple_New' => [ ['Py_ssize_t size'] => 'opaque' ],
         'PyTuple_Pack' => [ [ 'Py_ssize_t', '...' ] => 'opaque' ],
         'PyTuple_SetItem' => [ [ 'opaque', 'Py_ssize_t', 'opaque' ] => 'int' ],
-        'PyTuple_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PyTuple_Size' => [ ['opaque'] => 'Py_ssize_t' ],
     };
 };
 

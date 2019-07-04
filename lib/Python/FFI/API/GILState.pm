@@ -6,9 +6,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyGILState_Ensure' => [ [ 'void' ] => 'PyGILState_STATE' ],
-        'PyGILState_GetThisThreadState' => [ [ 'void' ] => 'PyThreadState *' ],
-        'PyGILState_Release' => [ [ 'PyGILState_STATE' ] => 'void' ],
+        'PyGILState_Ensure' => [ [] => 'PyGILState_STATE' ],
+        'PyGILState_GetThisThreadState' => [ [] => 'PyThreadState *' ],
+        'PyGILState_Release' => [ ['PyGILState_STATE'] => 'void' ],
     };
 };
 

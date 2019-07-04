@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyToken_OneChar' => [ [ 'int' ] => 'int' ],
+        'PyToken_OneChar' => [ ['int'] => 'int' ],
         'PyToken_ThreeChars' => [ [ 'int', 'int', 'int' ] => 'int' ],
         'PyToken_TwoChars' => [ [ 'int', 'int' ] => 'int' ],
     };

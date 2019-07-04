@@ -8,9 +8,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
 
         'PyNode_AddChild' => [ [ 'node *', 'int', 'char *', 'int', 'int_offset', 'int_lineno', 'int_col_offset' ] => 'int' ],
         'PyNode_Compile' => [ [ 'struct _node *', 'string' ] => 'PyCodeObject *' ],
-        'PyNode_Free' => [ [ 'node *' ] => 'void' ],
-        'PyNode_ListTree' => [ [ 'node *' ] => 'void' ],
-        'PyNode_New' => [ [ 'int' ] => 'node *' ],
+        'PyNode_Free' => [ ['node *'] => 'void' ],
+        'PyNode_ListTree' => [ ['node *'] => 'void' ],
+        'PyNode_New' => [ ['int'] => 'node *' ],
     };
 };
 

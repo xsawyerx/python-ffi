@@ -6,13 +6,13 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyFloat_AsDouble' => [ [ 'opaque' ] => 'double' ],
-        'PyFloat_ClearFreeList' => [ [ 'void' ] => 'int' ],
-        'PyFloat_FromDouble' => [ [ 'double' ] => 'opaque' ],
-        'PyFloat_FromString' => [ [ 'PyObject*' ] => 'opaque' ],
-        'PyFloat_GetInfo' => [ [ 'void' ] => 'opaque' ],
-        'PyFloat_GetMax' => [ [ 'void' ] => 'double' ],
-        'PyFloat_GetMin' => [ [ 'void' ] => 'double' ],
+        'PyFloat_AsDouble' => [ ['opaque'] => 'double' ],
+        'PyFloat_ClearFreeList' => [ [] => 'int' ],
+        'PyFloat_FromDouble' => [ ['double'] => 'opaque' ],
+        'PyFloat_FromString' => [ ['PyObject*'] => 'opaque' ],
+        'PyFloat_GetInfo' => [ [] => 'opaque' ],
+        'PyFloat_GetMax' => [ [] => 'double' ],
+        'PyFloat_GetMin' => [ [] => 'double' ],
     };
 };
 

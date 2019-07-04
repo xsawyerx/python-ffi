@@ -22,7 +22,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         'PyRun_SimpleFile' => [ [ 'FILE *', 'string' ] => 'int' ],
         'PyRun_SimpleFileEx' => [ [ 'FILE *', 'string', 'int' ] => 'int' ],
         'PyRun_SimpleFileExFlags' => [ [ 'FILE *', 'string', 'int', 'PyCompilerFlags *' ] => 'int' ],
-        'PyRun_SimpleString' => [ [ 'string' ] => 'int' ],
+        'PyRun_SimpleString' => [ ['string'] => 'int' ],
         'PyRun_SimpleStringFlags' => [ [ 'string', 'PyCompilerFlags *' ] => 'int' ],
         'PyRun_String' => [ [ 'string', 'int', 'opaque', 'opaque' ] => 'opaque' ],
         'PyRun_StringFlags' => [ [ 'string', 'int', 'opaque', 'opaque', 'PyCompilerFlags *' ] => 'opaque' ],

@@ -6,8 +6,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyMem_Free' => [ [ 'void *' ] => 'void' ],
-        'PyMem_Malloc' => [ [ 'size_t size' ] => 'void *' ],
+        'PyMem_Free' => [ ['void *'] => 'void' ],
+        'PyMem_Malloc' => [ ['size_t size'] => 'void *' ],
         'PyMem_Realloc' => [ [ 'void *', 'size_t new_size' ] => 'void *' ],
     };
 };

@@ -6,10 +6,10 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyMethod_ClearFreeList' => [ [ 'void' ] => 'int' ],
-        'PyMethod_Function' => [ [ 'opaque' ] => 'opaque' ],
+        'PyMethod_ClearFreeList' => [ [] => 'int' ],
+        'PyMethod_Function' => [ ['opaque'] => 'opaque' ],
         'PyMethod_New' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
-        'PyMethod_Self' => [ [ 'opaque' ] => 'opaque' ],
+        'PyMethod_Self' => [ ['opaque'] => 'opaque' ],
     };
 };
 

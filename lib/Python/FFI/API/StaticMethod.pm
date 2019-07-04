@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyStaticMethod_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PyStaticMethod_New' => [ ['opaque'] => 'opaque' ],
     };
 };
 

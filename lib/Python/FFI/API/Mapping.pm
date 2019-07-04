@@ -6,16 +6,16 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyMapping_Check' => [ [ 'opaque' ] => 'int' ],
+        'PyMapping_Check' => [ ['opaque'] => 'int' ],
         'PyMapping_GetItemString' => [ [ 'opaque', 'string' ] => 'opaque' ],
         'PyMapping_HasKey' => [ [ 'opaque', 'opaque' ] => 'int' ],
         'PyMapping_HasKeyString' => [ [ 'opaque', 'string' ] => 'int' ],
-        'PyMapping_Items' => [ [ 'opaque' ] => 'opaque' ],
-        'PyMapping_Keys' => [ [ 'opaque' ] => 'opaque' ],
-        'PyMapping_Length' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PyMapping_Items' => [ ['opaque'] => 'opaque' ],
+        'PyMapping_Keys' => [ ['opaque'] => 'opaque' ],
+        'PyMapping_Length' => [ ['opaque'] => 'Py_ssize_t' ],
         'PyMapping_SetItemString' => [ [ 'opaque', 'string', 'opaque' ] => 'int' ],
-        'PyMapping_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
-        'PyMapping_Values' => [ [ 'opaque' ] => 'opaque' ],
+        'PyMapping_Size' => [ ['opaque'] => 'Py_ssize_t' ],
+        'PyMapping_Values' => [ ['opaque'] => 'opaque' ],
     };
 };
 

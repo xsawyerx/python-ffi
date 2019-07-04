@@ -6,8 +6,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyGen_NeedsFinalizing' => [ [ 'PyGenObject *' ] => 'int' ],
-        'PyGen_New' => [ [ 'struct _frame *' ] => 'opaque' ],
+        'PyGen_NeedsFinalizing' => [ ['PyGenObject *'] => 'int' ],
+        'PyGen_New' => [ ['struct _frame *'] => 'opaque' ],
         'PyGen_NewWithQualName' => [ [ 'struct _frame *', 'opaque', 'opaque' ] => 'opaque' ],
     };
 };

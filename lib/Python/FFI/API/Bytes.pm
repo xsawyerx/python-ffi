@@ -6,18 +6,18 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyBytes_AsString' => [ [ 'opaque' ] => 'char *' ],
+        'PyBytes_AsString' => [ ['opaque'] => 'char *' ],
         'PyBytes_AsStringAndSize' => [ [ 'opaque', 'char **', 'Py_ssize_t *     /* pointer to length variable or NULL(only possible for 0-terminatedstrings' ] => 'int' ],
         'PyBytes_Concat' => [ [ 'PyObject **', 'opaque' ] => 'void' ],
         'PyBytes_ConcatAndDel' => [ [ 'PyObject **', 'opaque' ] => 'void' ],
         'PyBytes_DecodeEscape' => [ [ 'string', 'Py_ssize_t', 'string', 'Py_ssize_t', 'string' ] => 'opaque' ],
         'PyBytes_FromFormat' => [ [ 'const char*', '...' ] => 'opaque' ],
         'PyBytes_FromFormatV' => [ [ 'const char*', 'va_list' ] => 'opaque' ],
-        'PyBytes_FromObject' => [ [ 'opaque' ] => 'opaque' ],
-        'PyBytes_FromString' => [ [ 'string' ] => 'opaque' ],
+        'PyBytes_FromObject' => [ ['opaque'] => 'opaque' ],
+        'PyBytes_FromString' => [ ['string'] => 'opaque' ],
         'PyBytes_FromStringAndSize' => [ [ 'string', 'Py_ssize_t' ] => 'opaque' ],
         'PyBytes_Repr' => [ [ 'opaque', 'int' ] => 'opaque' ],
-        'PyBytes_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PyBytes_Size' => [ ['opaque'] => 'Py_ssize_t' ],
     };
 };
 

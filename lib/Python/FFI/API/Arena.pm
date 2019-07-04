@@ -7,9 +7,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyArena_AddPyObject' => [ [ 'PyArena *', 'opaque' ] => 'int' ],
-        'PyArena_Free' => [ [ 'PyArena *' ] => 'void' ],
+        'PyArena_Free' => [ ['PyArena *'] => 'void' ],
         'PyArena_Malloc' => [ [ 'PyArena *', 'size_t size' ] => 'void *' ],
-        'PyArena_New' => [ [ 'void' ] => 'PyArena *' ],
+        'PyArena_New' => [ [] => 'PyArena *' ],
     };
 };
 

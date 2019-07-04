@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyHash_GetFuncDef' => [ [ 'void' ] => 'PyHash_FuncDef*' ],
+        'PyHash_GetFuncDef' => [ [] => 'PyHash_FuncDef*' ],
     };
 };
 

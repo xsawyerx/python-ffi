@@ -6,13 +6,13 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyFrame_BlockPop' => [ [ 'PyFrameObject *' ] => 'PyTryBlock *' ],
+        'PyFrame_BlockPop' => [ ['PyFrameObject *'] => 'PyTryBlock *' ],
         'PyFrame_BlockSetup' => [ [ 'PyFrameObject *', 'int', 'int', 'int' ] => 'void' ],
-        'PyFrame_ClearFreeList' => [ [ 'void' ] => 'int' ],
+        'PyFrame_ClearFreeList' => [ [] => 'int' ],
         'PyFrame_ExtendStack' => [ [ 'PyFrameObject *', 'int', 'int' ] => 'PyObject **' ],
-        'PyFrame_FastToLocals' => [ [ 'PyFrameObject *' ] => 'void' ],
-        'PyFrame_FastToLocalsWithError' => [ [ 'PyFrameObject *' ] => 'int' ],
-        'PyFrame_GetLineNumber' => [ [ 'PyFrameObject *' ] => 'int' ],
+        'PyFrame_FastToLocals' => [ ['PyFrameObject *'] => 'void' ],
+        'PyFrame_FastToLocalsWithError' => [ ['PyFrameObject *'] => 'int' ],
+        'PyFrame_GetLineNumber' => [ ['PyFrameObject *'] => 'int' ],
         'PyFrame_LocalsToFast' => [ [ 'PyFrameObject *', 'int' ] => 'void' ],
         'PyFrame_New' => [ [ 'PyThreadState *', 'PyCodeObject *', 'opaque', 'opaque' ] => 'PyFrameObject *' ],
     };

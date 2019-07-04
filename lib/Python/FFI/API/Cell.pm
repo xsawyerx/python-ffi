@@ -6,8 +6,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyCell_Get' => [ [ 'opaque' ] => 'opaque' ],
-        'PyCell_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PyCell_Get' => [ ['opaque'] => 'opaque' ],
+        'PyCell_New' => [ ['opaque'] => 'opaque' ],
         'PyCell_Set' => [ [ 'opaque', 'opaque' ] => 'int' ],
     };
 };

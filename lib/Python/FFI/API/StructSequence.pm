@@ -9,8 +9,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         'PyStructSequence_GetItem' => [ [ 'PyObject*', 'Py_ssize_t' ] => 'PyObject*' ],
         'PyStructSequence_InitType' => [ [ 'PyTypeObject *', 'PyStructSequence_Desc *' ] => 'void' ],
         'PyStructSequence_InitType2' => [ [ 'PyTypeObject *', 'PyStructSequence_Desc *' ] => 'int' ],
-        'PyStructSequence_New' => [ [ 'PyTypeObject* type' ] => 'opaque' ],
-        'PyStructSequence_NewType' => [ [ 'PyStructSequence_Desc *' ] => 'PyTypeObject*' ],
+        'PyStructSequence_New' => [ ['PyTypeObject* type'] => 'opaque' ],
+        'PyStructSequence_NewType' => [ ['PyStructSequence_Desc *'] => 'PyTypeObject*' ],
         'PyStructSequence_SetItem' => [ [ 'PyObject*', 'Py_ssize_t', 'PyObject*' ] => 'void' ],
     };
 };

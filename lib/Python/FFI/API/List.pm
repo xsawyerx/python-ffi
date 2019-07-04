@@ -7,17 +7,17 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyList_Append' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PyList_AsTuple' => [ [ 'opaque' ] => 'opaque' ],
-        'PyList_ClearFreeList' => [ [ 'void' ] => 'int' ],
+        'PyList_AsTuple' => [ ['opaque'] => 'opaque' ],
+        'PyList_ClearFreeList' => [ [] => 'int' ],
         'PyList_GetItem' => [ [ 'opaque', 'Py_ssize_t' ] => 'opaque' ],
         'PyList_GetSlice' => [ [ 'opaque', 'Py_ssize_t', 'Py_ssize_t' ] => 'opaque' ],
         'PyList_Insert' => [ [ 'opaque', 'Py_ssize_t', 'opaque' ] => 'int' ],
-        'PyList_New' => [ [ 'Py_ssize_t size' ] => 'opaque' ],
-        'PyList_Reverse' => [ [ 'opaque' ] => 'int' ],
+        'PyList_New' => [ ['Py_ssize_t size'] => 'opaque' ],
+        'PyList_Reverse' => [ ['opaque'] => 'int' ],
         'PyList_SetItem' => [ [ 'opaque', 'Py_ssize_t', 'opaque' ] => 'int' ],
         'PyList_SetSlice' => [ [ 'opaque', 'Py_ssize_t', 'Py_ssize_t', 'opaque' ] => 'int' ],
-        'PyList_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
-        'PyList_Sort' => [ [ 'opaque' ] => 'int' ],
+        'PyList_Size' => [ ['opaque'] => 'Py_ssize_t' ],
+        'PyList_Sort' => [ ['opaque'] => 'int' ],
     };
 };
 

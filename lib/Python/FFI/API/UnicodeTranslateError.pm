@@ -7,8 +7,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyUnicodeTranslateError_GetEnd' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
-        'PyUnicodeTranslateError_GetObject' => [ [ 'opaque' ] => 'opaque' ],
-        'PyUnicodeTranslateError_GetReason' => [ [ 'opaque' ] => 'opaque' ],
+        'PyUnicodeTranslateError_GetObject' => [ ['opaque'] => 'opaque' ],
+        'PyUnicodeTranslateError_GetReason' => [ ['opaque'] => 'opaque' ],
         'PyUnicodeTranslateError_GetStart' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
         'PyUnicodeTranslateError_SetEnd' => [ [ 'opaque', 'Py_ssize_t' ] => 'int' ],
         'PyUnicodeTranslateError_SetReason' => [ [ 'opaque', 'string' ] => 'int' ],

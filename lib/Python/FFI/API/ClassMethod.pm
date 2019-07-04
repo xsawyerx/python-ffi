@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyClassMethod_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PyClassMethod_New' => [ ['opaque'] => 'opaque' ],
     };
 };
 

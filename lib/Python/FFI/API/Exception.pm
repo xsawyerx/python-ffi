@@ -6,9 +6,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyException_GetCause' => [ [ 'opaque' ] => 'opaque' ],
-        'PyException_GetContext' => [ [ 'opaque' ] => 'opaque' ],
-        'PyException_GetTraceback' => [ [ 'opaque' ] => 'opaque' ],
+        'PyException_GetCause' => [ ['opaque'] => 'opaque' ],
+        'PyException_GetContext' => [ ['opaque'] => 'opaque' ],
+        'PyException_GetTraceback' => [ ['opaque'] => 'opaque' ],
         'PyException_SetCause' => [ [ 'opaque', 'opaque' ] => 'void' ],
         'PyException_SetContext' => [ [ 'opaque', 'opaque' ] => 'void' ],
         'PyException_SetTraceback' => [ [ 'opaque', 'opaque' ] => 'int' ],

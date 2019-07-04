@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyFrozenSet_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PyFrozenSet_New' => [ ['opaque'] => 'opaque' ],
     };
 };
 

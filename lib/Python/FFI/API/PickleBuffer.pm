@@ -6,9 +6,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyPickleBuffer_FromObject' => [ [ 'opaque' ] => 'opaque' ],
-        'PyPickleBuffer_GetBuffer' => [ [ 'opaque' ] => 'const Py_buffer *' ],
-        'PyPickleBuffer_Release' => [ [ 'opaque' ] => 'int' ],
+        'PyPickleBuffer_FromObject' => [ ['opaque'] => 'opaque' ],
+        'PyPickleBuffer_GetBuffer' => [ ['opaque'] => 'const Py_buffer *' ],
+        'PyPickleBuffer_Release' => [ ['opaque'] => 'int' ],
     };
 };
 

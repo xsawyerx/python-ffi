@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyGC_Collect' => [ [ 'void' ] => 'Py_ssize_t' ],
+        'PyGC_Collect' => [ [] => 'Py_ssize_t' ],
     };
 };
 

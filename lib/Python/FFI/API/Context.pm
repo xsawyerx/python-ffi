@@ -6,12 +6,12 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyContext_ClearFreeList' => [ [ 'void' ] => 'int' ],
-        'PyContext_Copy' => [ [ 'opaque' ] => 'opaque' ],
-        'PyContext_CopyCurrent' => [ [ 'void' ] => 'opaque' ],
-        'PyContext_Enter' => [ [ 'opaque' ] => 'int' ],
-        'PyContext_Exit' => [ [ 'opaque' ] => 'int' ],
-        'PyContext_New' => [ [ 'void' ] => 'opaque' ],
+        'PyContext_ClearFreeList' => [ [] => 'int' ],
+        'PyContext_Copy' => [ ['opaque'] => 'opaque' ],
+        'PyContext_CopyCurrent' => [ [] => 'opaque' ],
+        'PyContext_Enter' => [ ['opaque'] => 'int' ],
+        'PyContext_Exit' => [ ['opaque'] => 'int' ],
+        'PyContext_New' => [ [] => 'opaque' ],
     };
 };
 

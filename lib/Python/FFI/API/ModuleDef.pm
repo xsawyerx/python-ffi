@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyModuleDef_Init' => [ [ 'struct PyModuleDef*' ] => 'opaque' ],
+        'PyModuleDef_Init' => [ ['struct PyModuleDef*'] => 'opaque' ],
     };
 };
 

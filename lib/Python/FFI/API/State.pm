@@ -7,8 +7,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyState_AddModule' => [ [ 'PyObject*', 'struct PyModuleDef*' ] => 'int' ],
-        'PyState_FindModule' => [ [ 'struct PyModuleDef*' ] => 'PyObject*' ],
-        'PyState_RemoveModule' => [ [ 'struct PyModuleDef*' ] => 'int' ],
+        'PyState_FindModule' => [ ['struct PyModuleDef*'] => 'PyObject*' ],
+        'PyState_RemoveModule' => [ ['struct PyModuleDef*'] => 'int' ],
     };
 };
 

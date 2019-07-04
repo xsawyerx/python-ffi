@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyBool_FromLong' => [ [ 'long' ] => 'opaque' ],
+        'PyBool_FromLong' => [ ['long'] => 'opaque' ],
     };
 };
 

@@ -6,16 +6,16 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyType_ClearCache' => [ [ 'void' ] => 'unsigned int' ],
-        'PyType_FromSpec' => [ [ 'PyType_Spec*' ] => 'PyObject*' ],
+        'PyType_ClearCache' => [ [] => 'unsigned int' ],
+        'PyType_FromSpec' => [ ['PyType_Spec*'] => 'PyObject*' ],
         'PyType_FromSpecWithBases' => [ [ 'PyType_Spec*', 'PyObject*' ] => 'PyObject*' ],
         'PyType_GenericAlloc' => [ [ 'struct _typeobject *', 'Py_ssize_t' ] => 'opaque' ],
         'PyType_GenericNew' => [ [ 'struct _typeobject *', 'opaque', 'opaque' ] => 'opaque' ],
-        'PyType_GetFlags' => [ [ 'struct _typeobject*' ] => 'unsigned long' ],
+        'PyType_GetFlags' => [ ['struct _typeobject*'] => 'unsigned long' ],
         'PyType_GetSlot' => [ [ 'struct _typeobject*', 'int' ] => 'void*' ],
         'PyType_IsSubtype' => [ [ 'struct _typeobject *', 'struct _typeobject *' ] => 'int' ],
-        'PyType_Modified' => [ [ 'struct _typeobject *' ] => 'void' ],
-        'PyType_Ready' => [ [ 'struct _typeobject *' ] => 'int' ],
+        'PyType_Modified' => [ ['struct _typeobject *'] => 'void' ],
+        'PyType_Ready' => [ ['struct _typeobject *'] => 'int' ],
     };
 };
 

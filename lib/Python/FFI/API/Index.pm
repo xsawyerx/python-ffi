@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyIndex_Check' => [ [ 'opaque' ] => 'int' ],
+        'PyIndex_Check' => [ ['opaque'] => 'int' ],
     };
 };
 

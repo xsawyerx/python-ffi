@@ -6,14 +6,14 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyThreadState_Clear' => [ [ 'PyThreadState *' ] => 'void' ],
-        'PyThreadState_Delete' => [ [ 'PyThreadState *' ] => 'void' ],
-        'PyThreadState_DeleteCurrent' => [ [ 'void' ] => 'void' ],
-        'PyThreadState_Get' => [ [ 'void' ] => 'PyThreadState *' ],
-        'PyThreadState_GetDict' => [ [ 'void' ] => 'opaque' ],
-        'PyThreadState_New' => [ [ 'PyInterpreterState *' ] => 'PyThreadState *' ],
+        'PyThreadState_Clear' => [ ['PyThreadState *'] => 'void' ],
+        'PyThreadState_Delete' => [ ['PyThreadState *'] => 'void' ],
+        'PyThreadState_DeleteCurrent' => [ [] => 'void' ],
+        'PyThreadState_Get' => [ [] => 'PyThreadState *' ],
+        'PyThreadState_GetDict' => [ [] => 'opaque' ],
+        'PyThreadState_New' => [ ['PyInterpreterState *'] => 'PyThreadState *' ],
         'PyThreadState_SetAsyncExc' => [ [ 'unsigned long', 'opaque' ] => 'int' ],
-        'PyThreadState_Swap' => [ [ 'PyThreadState *' ] => 'PyThreadState *' ],
+        'PyThreadState_Swap' => [ ['PyThreadState *'] => 'PyThreadState *' ],
     };
 };
 

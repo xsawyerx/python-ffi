@@ -6,9 +6,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyCapsule_GetContext' => [ [ 'opaque' ] => 'void *' ],
-        'PyCapsule_GetDestructor' => [ [ 'opaque' ] => 'PyCapsule_Destructor' ],
-        'PyCapsule_GetName' => [ [ 'opaque' ] => 'string' ],
+        'PyCapsule_GetContext' => [ ['opaque'] => 'void *' ],
+        'PyCapsule_GetDestructor' => [ ['opaque'] => 'PyCapsule_Destructor' ],
+        'PyCapsule_GetName' => [ ['opaque'] => 'string' ],
         'PyCapsule_GetPointer' => [ [ 'opaque', 'string' ] => 'void *' ],
         'PyCapsule_Import' => [ [ 'string', 'int_block' ] => 'void *' ],
         'PyCapsule_IsValid' => [ [ 'opaque', 'string' ] => 'int' ],

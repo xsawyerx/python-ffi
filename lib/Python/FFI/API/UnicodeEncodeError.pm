@@ -6,10 +6,10 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyUnicodeEncodeError_GetEncoding' => [ [ 'opaque' ] => 'opaque' ],
+        'PyUnicodeEncodeError_GetEncoding' => [ ['opaque'] => 'opaque' ],
         'PyUnicodeEncodeError_GetEnd' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
-        'PyUnicodeEncodeError_GetObject' => [ [ 'opaque' ] => 'opaque' ],
-        'PyUnicodeEncodeError_GetReason' => [ [ 'opaque' ] => 'opaque' ],
+        'PyUnicodeEncodeError_GetObject' => [ ['opaque'] => 'opaque' ],
+        'PyUnicodeEncodeError_GetReason' => [ ['opaque'] => 'opaque' ],
         'PyUnicodeEncodeError_GetStart' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
         'PyUnicodeEncodeError_SetEnd' => [ [ 'opaque', 'Py_ssize_t' ] => 'int' ],
         'PyUnicodeEncodeError_SetReason' => [ [ 'opaque', 'string' ] => 'int' ],

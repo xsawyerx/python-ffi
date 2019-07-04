@@ -7,7 +7,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyODict_DelItem' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PyODict_New' => [ [ 'void' ] => 'opaque' ],
+        'PyODict_New' => [ [] => 'opaque' ],
         'PyODict_SetItem' => [ [ 'opaque', 'opaque', 'opaque' ] => 'int' ],
     };
 };

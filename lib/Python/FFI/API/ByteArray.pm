@@ -6,12 +6,12 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyByteArray_AsString' => [ [ 'opaque' ] => 'char *' ],
+        'PyByteArray_AsString' => [ ['opaque'] => 'char *' ],
         'PyByteArray_Concat' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
-        'PyByteArray_FromObject' => [ [ 'opaque' ] => 'opaque' ],
+        'PyByteArray_FromObject' => [ ['opaque'] => 'opaque' ],
         'PyByteArray_FromStringAndSize' => [ [ 'string', 'Py_ssize_t' ] => 'opaque' ],
         'PyByteArray_Resize' => [ [ 'opaque', 'Py_ssize_t' ] => 'int' ],
-        'PyByteArray_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PyByteArray_Size' => [ ['opaque'] => 'Py_ssize_t' ],
     };
 };
 

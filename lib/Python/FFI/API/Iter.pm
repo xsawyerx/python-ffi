@@ -6,8 +6,8 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyIter_Check' => [ [ 'opaque' ] => 'int' ],
-        'PyIter_Next' => [ [ 'opaque' ] => 'opaque' ],
+        'PyIter_Check' => [ ['opaque'] => 'int' ],
+        'PyIter_Next' => [ ['opaque'] => 'opaque' ],
     };
 };
 

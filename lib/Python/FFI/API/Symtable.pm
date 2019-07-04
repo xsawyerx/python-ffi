@@ -8,7 +8,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
 
         'PySymtable_Build' => [ [ 'mod_ty mod', 'string', 'PyFutureFeatures *' ] => 'struct symtable *' ],
         'PySymtable_BuildObject' => [ [ 'mod_ty mod', 'opaque', 'PyFutureFeatures *' ] => 'struct symtable *' ],
-        'PySymtable_Free' => [ [ 'struct symtable *' ] => 'void' ],
+        'PySymtable_Free' => [ ['struct symtable *'] => 'void' ],
         'PySymtable_Lookup' => [ [ 'struct symtable *', 'void *' ] => 'PySTEntryObject *' ],
     };
 };

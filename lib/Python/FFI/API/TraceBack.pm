@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyTraceBack_Here' => [ [ 'struct _frame *' ] => 'int' ],
+        'PyTraceBack_Here' => [ ['struct _frame *'] => 'int' ],
         'PyTraceBack_Print' => [ [ 'opaque', 'opaque' ] => 'int' ],
     };
 };

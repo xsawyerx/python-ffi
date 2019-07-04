@@ -12,7 +12,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         'PyArg_UnpackTuple' => [ [ 'opaque', 'string', 'Py_ssize_t', 'Py_ssize_t', '...' ] => 'int' ],
         'PyArg_VaParse' => [ [ 'opaque', 'string', 'va_list' ] => 'int' ],
         'PyArg_VaParseTupleAndKeywords' => [ [ 'opaque', 'opaque', 'string', 'char **', 'va_list' ] => 'int' ],
-        'PyArg_ValidateKeywordArguments' => [ [ 'opaque' ] => 'int' ],
+        'PyArg_ValidateKeywordArguments' => [ ['opaque'] => 'int' ],
     };
 };
 

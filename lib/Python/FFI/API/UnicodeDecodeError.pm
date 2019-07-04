@@ -7,10 +7,10 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyUnicodeDecodeError_Create' => [ [ 'string', 'string', 'Py_ssize_t length', 'Py_ssize_t start', 'Py_ssize_t end', 'string' ] => 'opaque' ],
-        'PyUnicodeDecodeError_GetEncoding' => [ [ 'opaque' ] => 'opaque' ],
+        'PyUnicodeDecodeError_GetEncoding' => [ ['opaque'] => 'opaque' ],
         'PyUnicodeDecodeError_GetEnd' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
-        'PyUnicodeDecodeError_GetObject' => [ [ 'opaque' ] => 'opaque' ],
-        'PyUnicodeDecodeError_GetReason' => [ [ 'opaque' ] => 'opaque' ],
+        'PyUnicodeDecodeError_GetObject' => [ ['opaque'] => 'opaque' ],
+        'PyUnicodeDecodeError_GetReason' => [ ['opaque'] => 'opaque' ],
         'PyUnicodeDecodeError_GetStart' => [ [ 'opaque', 'Py_ssize_t *' ] => 'int' ],
         'PyUnicodeDecodeError_SetEnd' => [ [ 'opaque', 'Py_ssize_t' ] => 'int' ],
         'PyUnicodeDecodeError_SetReason' => [ [ 'opaque', 'string' ] => 'int' ],

@@ -7,10 +7,10 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PyCFunction_Call' => [ [ 'opaque', 'opaque', 'opaque' ] => 'opaque' ],
-        'PyCFunction_ClearFreeList' => [ [ 'void' ] => 'int' ],
-        'PyCFunction_GetFlags' => [ [ 'opaque' ] => 'int' ],
-        'PyCFunction_GetFunction' => [ [ 'opaque' ] => 'PyCFunction' ],
-        'PyCFunction_GetSelf' => [ [ 'opaque' ] => 'opaque' ],
+        'PyCFunction_ClearFreeList' => [ [] => 'int' ],
+        'PyCFunction_GetFlags' => [ ['opaque'] => 'int' ],
+        'PyCFunction_GetFunction' => [ ['opaque'] => 'PyCFunction' ],
+        'PyCFunction_GetSelf' => [ ['opaque'] => 'opaque' ],
         'PyCFunction_NewEx' => [ [ 'PyMethodDef *', 'opaque', 'opaque' ] => 'opaque' ],
     };
 };

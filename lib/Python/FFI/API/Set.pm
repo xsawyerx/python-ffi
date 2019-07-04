@@ -7,13 +7,13 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         %{ $self->$orig(@args) },
 
         'PySet_Add' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PySet_Clear' => [ [ 'opaque' ] => 'int' ],
-        'PySet_ClearFreeList' => [ [ 'void' ] => 'int' ],
+        'PySet_Clear' => [ ['opaque'] => 'int' ],
+        'PySet_ClearFreeList' => [ [] => 'int' ],
         'PySet_Contains' => [ [ 'opaque', 'opaque' ] => 'int' ],
         'PySet_Discard' => [ [ 'opaque', 'opaque' ] => 'int' ],
-        'PySet_New' => [ [ 'opaque' ] => 'opaque' ],
-        'PySet_Pop' => [ [ 'opaque' ] => 'opaque' ],
-        'PySet_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
+        'PySet_New' => [ ['opaque'] => 'opaque' ],
+        'PySet_Pop' => [ ['opaque'] => 'opaque' ],
+        'PySet_Size' => [ ['opaque'] => 'Py_ssize_t' ],
     };
 };
 

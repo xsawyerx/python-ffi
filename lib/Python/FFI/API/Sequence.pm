@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PySequence_Check' => [ [ 'opaque' ] => 'int' ],
+        'PySequence_Check' => [ ['opaque'] => 'int' ],
         'PySequence_Concat' => [ [ 'PyObject *1', 'PyObject *2' ] => 'opaque' ],
         'PySequence_Contains' => [ [ 'opaque', 'opaque' ] => 'int' ],
         'PySequence_Count' => [ [ 'opaque', 'opaque' ] => 'Py_ssize_t' ],
@@ -19,13 +19,13 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
         'PySequence_InPlaceConcat' => [ [ 'PyObject *1', 'PyObject *2' ] => 'opaque' ],
         'PySequence_InPlaceRepeat' => [ [ 'opaque', 'Py_ssize_t count' ] => 'opaque' ],
         'PySequence_Index' => [ [ 'opaque', 'opaque' ] => 'Py_ssize_t' ],
-        'PySequence_Length' => [ [ 'opaque' ] => 'Py_ssize_t' ],
-        'PySequence_List' => [ [ 'opaque' ] => 'opaque' ],
+        'PySequence_Length' => [ ['opaque'] => 'Py_ssize_t' ],
+        'PySequence_List' => [ ['opaque'] => 'opaque' ],
         'PySequence_Repeat' => [ [ 'opaque', 'Py_ssize_t count' ] => 'opaque' ],
         'PySequence_SetItem' => [ [ 'opaque', 'Py_ssize_t i', 'opaque' ] => 'int' ],
         'PySequence_SetSlice' => [ [ 'opaque', 'Py_ssize_t i1', 'Py_ssize_t i2', 'opaque' ] => 'int' ],
-        'PySequence_Size' => [ [ 'opaque' ] => 'Py_ssize_t' ],
-        'PySequence_Tuple' => [ [ 'opaque' ] => 'opaque' ],
+        'PySequence_Size' => [ ['opaque'] => 'Py_ssize_t' ],
+        'PySequence_Tuple' => [ ['opaque'] => 'opaque' ],
     };
 };
 

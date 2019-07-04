@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyWeakref_GetObject' => [ [ 'opaque' ] => 'opaque' ],
+        'PyWeakref_GetObject' => [ ['opaque'] => 'opaque' ],
         'PyWeakref_NewProxy' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
         'PyWeakref_NewRef' => [ [ 'opaque', 'opaque' ] => 'opaque' ],
     };

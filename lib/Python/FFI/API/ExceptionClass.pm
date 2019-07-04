@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyExceptionClass_Name' => [ [ 'opaque' ] => 'string' ],
+        'PyExceptionClass_Name' => [ ['opaque'] => 'string' ],
     };
 };
 

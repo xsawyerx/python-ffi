@@ -6,11 +6,11 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyComplex_AsCComplex' => [ [ 'opaque' ] => 'Py_complex' ],
-        'PyComplex_FromCComplex' => [ [ 'Py_complex' ] => 'opaque' ],
+        'PyComplex_AsCComplex' => [ ['opaque'] => 'Py_complex' ],
+        'PyComplex_FromCComplex' => [ ['Py_complex'] => 'opaque' ],
         'PyComplex_FromDoubles' => [ [ 'double real', 'double imag' ] => 'opaque' ],
-        'PyComplex_ImagAsDouble' => [ [ 'opaque' ] => 'double' ],
-        'PyComplex_RealAsDouble' => [ [ 'opaque' ] => 'double' ],
+        'PyComplex_ImagAsDouble' => [ ['opaque'] => 'double' ],
+        'PyComplex_RealAsDouble' => [ ['opaque'] => 'double' ],
     };
 };
 

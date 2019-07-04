@@ -6,7 +6,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyDictProxy_New' => [ [ 'opaque' ] => 'opaque' ],
+        'PyDictProxy_New' => [ ['opaque'] => 'opaque' ],
     };
 };
 

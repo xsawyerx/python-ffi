@@ -6,9 +6,9 @@ around 'ffi_subs_data' => sub ($orig, $self, @args){
     return +{
         %{ $self->$orig(@args) },
 
-        'PyMemoryView_FromBuffer' => [ [ 'Py_buffer *' ] => 'opaque' ],
+        'PyMemoryView_FromBuffer' => [ ['Py_buffer *'] => 'opaque' ],
         'PyMemoryView_FromMemory' => [ [ 'char *', 'Py_ssize_t size', 'int' ] => 'opaque' ],
-        'PyMemoryView_FromObject' => [ [ 'opaque' ] => 'opaque' ],
+        'PyMemoryView_FromObject' => [ ['opaque'] => 'opaque' ],
         'PyMemoryView_GetContiguous' => [ [ 'opaque', 'int', 'char order' ] => 'opaque' ],
     };
 };
