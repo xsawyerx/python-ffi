@@ -71,11 +71,19 @@ foreach my $class ( sort keys %classes ) {
     my %subs;
     foreach my $func_spec ( @{ $classes{$class} } ) {
         my ( $name, $return, $args ) = @{$func_spec};
+
+        $args = [ grep !/^void$/, @{$args} ];
+
         convert_types( \$return );
         convert_types( \$_ ) for @{$args};
+
         my $args_list = join ', ', map "'$_'", @{$args};
+
+        @{$args} > 1
+            and $args_list = " $args_list ";
+
         push @{ $subs{'ffi_decl'} },
-            ' ' x SPACES() . qq!'$name' => [ [ $args_list ] => '$return' ],!;
+            ' ' x SPACES() . qq!'$name' => [ [$args_list] => '$return' ],!;
 
         my $sub_name = lc $name =~ s{^ Py (.+) $}{$1}xmsgr;
         push @{ $subs{'sub_decl'} }, $sub_template->fill_in(
