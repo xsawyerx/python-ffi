@@ -8,8 +8,12 @@ sub BUILD ($self) {
     $self->ffi_sub('Py_Initialize')->();
 }
 
-sub DESTROY ($self) {
+sub DEMOLISH ( $self, @ ) {
     $self->ffi_sub('Py_FinalizeEx')->();
+}
+
+sub run_code ( $self, $string ) {
+    return $self->ffi_sub('PyRun_SimpleString')->($string);
 }
 
 sub import_module ( $self, $string ){
