@@ -4,7 +4,7 @@ no warnings 'experimental::signatures';
 use feature 'signatures';
 extends 'Python::FFI';
 
-sub BUILD ($self) {
+sub BUILD ( $self, @ ) {
     $self->ffi_sub('Py_Initialize')->();
 }
 

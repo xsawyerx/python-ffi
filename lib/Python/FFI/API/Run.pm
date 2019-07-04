@@ -93,8 +93,8 @@ sub run_simplefileexflags ($self) {
     return $self->ffi_sub('PyRun_SimpleFileExFlags')->();
 }
 
-sub run_simplestring ($self) {
-    return $self->ffi_sub('PyRun_SimpleString')->();
+sub run_simplestring ($self, $string) {
+    return $self->ffi_sub('PyRun_SimpleString')->($string);
 }
 
 sub run_simplestringflags ($self) {
