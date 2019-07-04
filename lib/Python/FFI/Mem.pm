@@ -9,14 +9,27 @@ around 'ffi_subs_data' => sub {
 
     return +{
         %{ $self->$orig(@_) },
-        'PyMem_RawFree' => [ ['opaque'] => 'void' ],
+        'PyMem_Free'   => [ ['void *']      => 'void' ],
+        'PyMem_Malloc' => [ ['size_t size'] => 'void *' ],
+        'PyMem_Realloc' => [ [ 'void *', 'size_t new_size' ] => 'void *' ],
     };
 };
 
-sub mem_rawfree {
+sub mem_free {
     my $self = shift;
-    return $self->ffi_sub('PyMem_RawFree')->($string);
+    return $self->ffi_sub('PyMem_Free')->();
 }
+
+sub mem_malloc {
+    my $self = shift;
+    return $self->ffi_sub('PyMem_Malloc')->();
+}
+
+sub mem_realloc {
+    my $self = shift;
+    return $self->ffi_sub('PyMem_Realloc')->();
+}
+
 
 no Moose::Role;
 
