@@ -1,0 +1,90 @@
+# Python in Perl, natively
+
+## Work in progress! Be warned!
+
+This project is a little thing I'm playing with to allow Perl to natively call
+Python as a library. It has access to the C functions that implement the Python
+language API.
+
+# How to use it
+
+There's an example in `example.pl` that shows how to use it. Here it is:
+
+```perl
+use Python::FFI;
+my $python = Python::FFI->new();
+
+# Python: `import time`
+# CPython: `PyImport_ImportModule()`
+
+# Perl:
+$python->import_importmodule('time');
+```
+
+You can see here that we are calling the CPython function that implements
+the `import` Python function.
+
+# What can I do with it?
+
+Quite a few things. For example:
+
+* Run Python code natively in Perl
+* Run Python libraries natively in Perl
+* Implement your own `python` command line to Python. :)
+
+# Version of Python
+
+Currently I'm supporting Python 3.7 since this is what my box currently
+installs. You might want to edit `lib/Python/FFI.pm` to remove the `m`
+if you don't have that variant.
+
+If you edit it to a version of Python with a different public API functions,
+it's on you. :)
+
+My purpose at the end is to always support the latest version.
+
+# Low-level details
+
+## Generating the API classes
+
+The API classes are generated using two scripts:
+
+* `find_funcs.pl`: Run on the cpython.git clone. It generates the list of
+functions that Python has by analyzing the header files. The parsing is
+pretty crappy and it trips on a specific file and a set of functions there.
+The details at the beginning of the file explain how to overcome it.
+* `create_classes.pl`: Uses the JSON output of the previous file (which is
+included in the `tools/` directory) and creates all the classes.
+
+## How it works
+
+The `Python::FFI` uses `Python::FFI::API` which is a role that adds the
+functions under `Py_` prefix. Those are the main Python functions not under
+a particular namespace.
+
+The `Python::FFI::API` composes all the classes under `API/`. Each of these
+roles (as well as `API.pm` includes the specifications of the functions for
+that namespace.
+
+The `Python::FFI::Simple` module is an interface to a set of higher-level
+methods I decide on that do not require knowing how to use the Python library.
+For example, if you want to use Python, you ahve to initialize and destruct
+the Python interpreter. With `Python::FFI::Simple` you don't need to. This
+does *not* match the Python API but provides a comfortable layer above it.
+
+# What needs to be done?
+
+Right now this will not work for you. The reason is that I still haven't
+resolved all the function signatures. However...
+
+# Making it work for the demo
+
+* Edit `lib/Python/FFI/API.pm` and...
+* Under `with` remove everything except `Python::FFI::API::Run`
+* Under `ffi_subs_data` remove everything except `Py_Initialize` and
+`Py_FinalizeEx`
+* Edit `lib/Python/FFI/API/Run.pm` and...
+* Under `ffi_subs_data` remove everything except `PyRun_SimpleString`
+* Depending on your Python version, edit `lib/Python/FFI.pm`'s `ffi_lib`
+
+If you make these changes, the `example.pl` will work fine.
