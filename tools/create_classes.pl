@@ -13,18 +13,14 @@ use JSON::MaybeXS qw< decode_json >;
 use constant { 'SPACES' => 8 };
 
 my $tmpl_string = << '_END_TEMPLATE';
-package Python::FFI::{$namespace};
+package Python::FFI::API::{$namespace};
 
-use Moose::Role;
-no warnings 'experimental::signatures';
-use feature 'signatures';
+use Python::FFI::Role;
 
-around 'ffi_subs_data' => sub \{
-    my $orig = shift;
-    my $self = shift;
-
+around 'ffi_subs_data' => sub ($orig, $self, @args)\{
     return +\{
-        %\{ $self->$orig(@_) \},
+        %\{ $self->$orig(@args) \},
+
 {$ffi_subs_data}
     \};
 \};
@@ -36,9 +32,9 @@ no Moose::Role;
 1;
 _END_TEMPLATE
 
+# TODO: Add args
 my $sub_tmpl_string = << '_END_SUB_TEMPLATE';
-sub {$sub_name} \{
-    my $self = shift;
+sub {$sub_name} ($self) \{
     return $self->ffi_sub('{$ffi_sub}')->();
 \}
 _END_SUB_TEMPLATE
@@ -101,7 +97,7 @@ foreach my $class ( sort keys %classes ) {
         'HASH' => $vars,
     );
 
-    path("../lib/Python/FFI/$class.pm")->spew_utf8($str);
+    path("../lib/Python/FFI/API/$class.pm")->spew_utf8($str);
 
     #last;
 }
