@@ -27,7 +27,7 @@ around 'ffi_subs_data' => sub ($orig, $self, @args)\{
 
 {$func_subs}
 
-no Moose::Role;
+no Python::FFI::Role;
 
 1;
 _END_TEMPLATE
