@@ -1,4 +1,19 @@
 #!/usr/bin/perl
+# This script parses all headers from the Python source code
+# (cpython.git)
+# 1. Clone the github repo
+# 2. Adjust the unicodeobject.h to remove multi-line C comments
+# Specifically:
+#   * PyUnicode_DecodeUTF32
+#   * PyUnicode_DecodeUTF32Stateful
+#   * PyUnicode_DecodeUTF16
+#   * PyUnicode_DecodeUTF16Stateful
+#   * PyUnicode_Replace
+# Their multiline /* */ comment confuse the parser
+# Because the parser is pretty darn weak... :/
+# 3. Run the script. It will create a python_functions.json
+# 4. Run create_classes.pl
+
 use strict;
 use warnings;
 
